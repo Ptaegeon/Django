@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Coffee List</h1>
+    <div class="container my-3">
+        <table class="table">
+            <thread>
+                <tr class="thread-dark">
+                    <th>번호</th>
+                </tr>
+            </thead>
+            <tbody>
+
+    {% for element in coffee_list %}
+    <tr>
+        <td> {{element.id}}</td>
+        <td> {{element.name}}</td>
+        <td> {{element.price}}</td>
+    </tr>
+
+    {% endfor%}
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<div class = 'container'>
+    <h5 class='my-3 border-bottom pb-3'> 메뉴 추가</h5>
+    <form method="POST" class='post-form my-3'>
+        {% csrf_token %}
+
+        <!-- 오류 표시 start-->
+        {% if form.errors %}
+            {% for field in form %}
+                {% if field.errors %}
+                <strong>{{ field.label }} </strong>
+                {{ field.errors}}
+                {% endif %} 
+            {% endfor %}
+        {% endif %}
+        <!-- 오류 표시 end -->
+
+        {{ coffee_form.as_p}}
+        <button type = 'submit' class="btn btn-danger">Save</button>
+        
+    </form>    
+
+
+    <form method="POST"> {% csrf_token %}
+        ID : <input type="text" name="id">
+        <button type = 'submit' class='btn btn-danger'>Delete</button>
+    </form>
+
+</div>
+
+{% endblock %}

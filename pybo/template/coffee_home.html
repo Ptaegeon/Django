@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Coffee List</h1>
+    {% for element in coffee_list %}
+    <p> {{element.id}}. {{element.name}}, {{element.price}}</p>
+    {% endfor%} 
+
+{% endblock %}

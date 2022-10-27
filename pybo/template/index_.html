@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class = 'display-1'>Title</h1>
+    <p>123456</p>
+    <p>{{my_name | length}}</p>
+    {% for element in my_list %}
+    <p> {{element}}</p>
+    {% endfor%}
+    {% load static%}
+    <img src="{% static 'cat.jpg' %}" class = "img-fluid"  alt="My image">
+{% endblock %}
